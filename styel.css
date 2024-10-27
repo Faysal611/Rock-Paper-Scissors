@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.btn{
+    font-size: 50px;
+    font-family: cursive;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+    border: 5px double black;
+    padding: 0px 20px 0px 20px;
+}
+
+.btn2{
+    padding-bottom: 5px;
+}
+.btn:hover{
+    background-color: black;
+    color: white;
+    border: 5px double white;
+    transition-duration: 0.4s;
+}
+
+.human, .cpu{
+    margin-top: 50px;
+}
+
+.score{
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.result{
+    font-size: 100px;
+    font-family: Honk;
+    text-align: center;
+}
