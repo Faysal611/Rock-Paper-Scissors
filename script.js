@@ -1,6 +1,8 @@
+let count = 0;
 let typed_str;
 let humanSpan = document.querySelector(".humanScore");
 let cpuSpan = document.querySelector(".cpuScore");
+let result = document.querySelector(".result");
 
 let button = document.querySelectorAll(".btn");
 button.forEach((btn) => {
@@ -9,8 +11,21 @@ button.forEach((btn) => {
         playRound(getComputerChoice(), getHumanChoice());
        humanSpan.textContent = humanScore;
        cpuSpan.textContent = computerScore;
-       if(humanScore > computerScore) {
-        
+       count++;
+
+       if(count === 5) {
+        if(humanScore > computerScore) {
+            result.textContent = "You win the match!";
+        }
+        else if(humanScore < computerScore) {
+            result.textContent = "You lost!";
+        }
+        else{
+            result.textContent = "Draw!"
+        }
+        button.forEach((btn) => {
+            btn.disabled = true;
+        })
        }
     })
 })
@@ -28,7 +43,7 @@ function getComputerChoice() {
     }
 
     else {
-        return "Scissor";
+        return "Scissors";
     }
 
 }
@@ -54,34 +69,13 @@ function playRound(computerChoice, humanChoice) {
         return;
     }
     
-    else if ((computerChoice === "Paper" && humanChoice === "Rock") || (computerChoice === "Rock" && humanChoice === "Scissor") || (computerChoice === "Scissor" && humanChoice === "Paper")) {
-        computerScore++;
-        
+    else if ((computerChoice === "Paper" && humanChoice === "Rock") || (computerChoice === "Rock" && humanChoice === "Scissors") || (computerChoice === "Scissors" && humanChoice === "Paper")) {
+        computerScore++;   
     }
 
-    else if ((computerChoice === "Rock" && humanChoice === "Paper") || (computerChoice === "Scissor" && humanChoice === "Rock") || (computerChoice === "Paper" && humanChoice === "Scissor")) {
-        humanScore++;
-        
+    else if ((computerChoice === "Rock" && humanChoice === "Paper") || (computerChoice === "Scissors" && humanChoice === "Rock") || (computerChoice === "Paper" && humanChoice === "Scissors")) {
+        humanScore++;    
     }
 
     console.log(computerScore + " -- " + humanScore);
-    
 }
-
-    
-
-// for (let i = 0; i < 5; i++) {
-//     playRound(getComputerChoice(), getHumanChoice());
-// }
-
-// if ( humanScore === computerScore) {
-//     console.log("It's a draw.");
-// }
-
-// else if (humanScore > computerScore) {
-//     console.log("You win.");
-// }
-
-// else {
-//     console.log("You lose.");
-// }
